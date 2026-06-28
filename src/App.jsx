@@ -4,15 +4,21 @@ import './App.scss';
 export const App = () => {
   const [count, setCount] = useState(0);
 
-  const addOne = () => {
-    setCount(countNew => {
-      return countNew + 1;
-    });
-  };
-
   const add100 = () => {
     setCount(countNew => {
       return countNew + 100;
+    });
+  };
+
+  const addOne = () => {
+    setCount(countNew => {
+      const newCount = countNew + 1;
+
+      if (newCount % 5 === 0) {
+        add100();
+      }
+
+      return newCount;
     });
   };
 
